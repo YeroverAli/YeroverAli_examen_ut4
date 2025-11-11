@@ -11,3 +11,12 @@ Route::post('/mensaje', [MensajeController::class, 'store'])->name('mensaje.stor
 
 // Mostrar muro de mensajes
 Route::get('/muro', [MensajeController::class, 'index'])->name('mensaje.index');
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
