@@ -23,9 +23,9 @@
             <tbody>
                 @foreach ($mensajes as $mensaje)
                     <tr>
-                        <td>{{ $mensaje['nombre'] }}</td>
+                        <td>{{ $mensaje['name'] }}</td>
                         <td>{{ $mensaje['email'] }}</td>
-                        <td>{{ $mensaje['mensaje'] }}</td>
+                        <td>{{ $mensaje['message'] }}</td>
                     </tr>
                 @endforeach
             </tbody>

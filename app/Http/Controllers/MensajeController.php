@@ -42,29 +42,7 @@ class MensajeController extends Controller
 
     public function index()
     {
-        // Ruta absoluta al archivo mensajes.csv
-        $ruta = storage_path('app/mensajes.csv');
-        $mensajes = [];
-
-        if (file_exists($ruta)) {
-            // Leemos todas las líneas del archivo
-            // FILE_IGNORE_NEW_LINES para no incluir saltos de línea
-            // FILE_SKIP_EMPTY_LINES para ignorar líneas vacías
-            $lineas = file($ruta, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-
-            foreach ($lineas as $linea) {
-                // Eliminamos comillas y separamos por punto y coma
-                $campos = str_getcsv($linea, ';', '"');
-
-                if (count($campos) === 3) {
-                    $mensajes[] = [
-                        'nombre' => $campos[0],
-                        'email' => $campos[1],
-                        'mensaje' => $campos[2],
-                    ];
-                }
-            }
-        }
+        $mensajes = Message::all();
 
         // Pasamos los mensajes a la vista
         // compact('mensajes') crea un array con la variable $mensajes
