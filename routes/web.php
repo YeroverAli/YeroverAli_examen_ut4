@@ -30,6 +30,13 @@ Route::middleware(['auth'
 
    Route::post('/admin/users/store', [App\Http\Controllers\Admin\UserController::class, 'store']
    )->name('admin.users.store');
+
+   //Rutas de la vista formulario
+   Route::get('/admin/students/create', [App\Http\Controllers\Admin\StudentController::class, 'create'])
+   ->name('admin.students.create');
+
+   Route::post('/admin/students/store', [App\Http\Controllers\Admin\StudentController::class, 'store'])
+   ->name('admin.students.store');
 });
 
 // Rutas generadas por Jetstream para autenticación y dashboard
